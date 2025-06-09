@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+@font-face {
+  font-family: 'Miskan';
+  src: url('/fonts/Miskan.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Brittany';
+  src: url('/fonts/BrittanySignature.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Glacial';
+  src: url('/fonts/GlacialIndifference-Regular.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
