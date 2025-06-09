@@ -226,7 +226,7 @@ const MentoringPage: React.FC = () => {
                                     fontSize: {
                                         xs: '2rem',
                                         md: '2.5rem',
-                                        lg: '7rem',
+                                        lg: '6rem',
                                     },
                                 }}
                             >
@@ -241,7 +241,7 @@ const MentoringPage: React.FC = () => {
                             viewport={{ once: true }}
                             transition={{ duration: 3, ease: 'easeOut' }}
                         >
-                            <Typography variant="h2" sx={{ color: '#b83143', mb: 1, fontFamily: 'Glacial' }}>
+                            <Typography variant="h3" sx={{ color: '#b83143', mb: 1, fontFamily: 'Glacial' }}>
                                 Módulo 1 – Presença com Propósito
                             </Typography>
                             <Typography sx={{ fontSize: '2rem', color: '#000', mb: 3, whiteSpace: 'pre-line', fontFamily: 'Glacial' }}>
@@ -250,7 +250,7 @@ const MentoringPage: React.FC = () => {
                                 {'\n'}• Identidade visual e tom de voz
                             </Typography>
 
-                            <Typography variant="h2" sx={{ color: '#b83143', mb: 1, fontFamily: 'Glacial' }}>
+                            <Typography variant="h3" sx={{ color: '#b83143', mb: 1, fontFamily: 'Glacial' }}>
                                 Módulo 2 – Conteúdo que Conecta
                             </Typography>
                             <Typography sx={{ fontSize: '2rem', color: '#000', mb: 3, whiteSpace: 'pre-line', fontFamily: 'Glacial' }}>
@@ -259,7 +259,7 @@ const MentoringPage: React.FC = () => {
                                 {'\n'}• Quando e como usar feed, reels, carrossel e stories
                             </Typography>
 
-                            <Typography variant="h2" sx={{ color: '#b83143', mb: 1, fontFamily: 'Glacial' }}>
+                            <Typography variant="h3" sx={{ color: '#b83143', mb: 1, fontFamily: 'Glacial' }}>
                                 Módulo 3 – Ferramentas e Técnicas
                             </Typography>
                             <Typography sx={{ fontSize: '2rem', color: '#000', mb: 3, whiteSpace: 'pre-line', fontFamily: 'Glacial' }}>
@@ -268,7 +268,7 @@ const MentoringPage: React.FC = () => {
                                 {'\n'}• Escrita de legendas estratégicas e uso de hashtags
                             </Typography>
 
-                            <Typography variant="h2" sx={{ color: '#b83143', mb: 1, fontFamily: 'Glacial' }}>
+                            <Typography variant="h3" sx={{ color: '#b83143', mb: 1, fontFamily: 'Glacial' }}>
                                 Módulo 4 – Métrica e Crescimento
                             </Typography>
                             <Typography sx={{ fontSize: '2rem', color: '#000', mb: 3, whiteSpace: 'pre-line', fontFamily: 'Glacial' }}>
@@ -304,11 +304,11 @@ const MentoringPage: React.FC = () => {
                             transition={{ duration: 3, ease: 'easeOut' }}
                         >
                             <Typography variant="h3" sx={{
-                                color: '#b83143', mb: 1, fontFamily: 'Anton', fontSize: '5.5rem'
+                                color: '#b83143', mb: 1, fontFamily: 'Anton', fontSize: '4.5rem'
                             }}>
                                 CARGA HORARIA <br /> E MODALIDADE
                             </Typography>
-                            <Typography sx={{ fontSize: '2.8rem', color: '#000', mb: 3, whiteSpace: 'pre-line', fontFamily: 'Glacial' }}>
+                            <Typography sx={{ fontSize: '2.0rem', color: '#000', mb: 3, whiteSpace: 'pre-line', fontFamily: 'Glacial' }}>
                                 Duração: 4 horas de mentoria
                                 Modalidade:
                                 {'\n'} • On-line (via Google Meet)
@@ -332,12 +332,12 @@ const MentoringPage: React.FC = () => {
                                     textAlign: 'left',
                                     fontFamily: 'Anton',
                                     mt: 1,
-                                    fontSize: '5.5rem'
+                                    fontSize: '4.5rem'
                                 }}
                             >
                                 INVESTIMENTO
                             </Typography>
-                            <Typography sx={{ fontSize: '3rem', color: '#000', mb: 3, whiteSpace: 'pre-line', fontFamily: 'Glacial' }}>
+                            <Typography sx={{ fontSize: '2rem', color: '#000', mb: 3, whiteSpace: 'pre-line', fontFamily: 'Glacial' }}>
                                 R$ 797,00 dividido em até 12x<br /> pelo infinitepay<br />
                                 (inclui 1 encontro individual<br /> para personalização das estratégias<br /> e esclarecimento de dúvidas).
                             </Typography>
