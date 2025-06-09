@@ -223,7 +223,7 @@ const MentoringPage: React.FC = () => {
                                     textAlign: 'left',
                                     fontFamily: 'Anton',
                                     mt: 1,
-                                    fontSize: "1rem",
+                                    fontSize: "4rem",
                                 }}
                             >
                                 O que você<br /> aprendera :
@@ -240,7 +240,7 @@ const MentoringPage: React.FC = () => {
                             <Typography variant="h3" sx={{ color: '#b83143', mb: 1, fontFamily: 'Glacial' }}>
                                 Módulo 1 – Presença com Propósito
                             </Typography>
-                            <Typography sx={{ fontSize: '2rem', color: '#000', mb: 3, whiteSpace: 'pre-line', fontFamily: 'Glacial' }}>
+                            <Typography sx={{ fontSize: '1.5rem', color: '#000', mb: 3, whiteSpace: 'pre-line', fontFamily: 'Glacial' }}>
                                 • Como definir um posicionamento autêntico
                                 {'\n'}• Construção de bio estratégica
                                 {'\n'}• Identidade visual e tom de voz
@@ -249,7 +249,7 @@ const MentoringPage: React.FC = () => {
                             <Typography variant="h3" sx={{ color: '#b83143', mb: 1, fontFamily: 'Glacial' }}>
                                 Módulo 2 – Conteúdo que Conecta
                             </Typography>
-                            <Typography sx={{ fontSize: '2rem', color: '#000', mb: 3, whiteSpace: 'pre-line', fontFamily: 'Glacial' }}>
+                            <Typography sx={{ fontSize: '1.5rem', color: '#000', mb: 3, whiteSpace: 'pre-line', fontFamily: 'Glacial' }}>
                                 • Diferença entre conteúdo de valor, conexão e conversão
                                 {'\n'}• Como criar roteiros simples e impactantes para reels e carrosséis
                                 {'\n'}• Quando e como usar feed, reels, carrossel e stories
@@ -258,7 +258,7 @@ const MentoringPage: React.FC = () => {
                             <Typography variant="h3" sx={{ color: '#b83143', mb: 1, fontFamily: 'Glacial' }}>
                                 Módulo 3 – Ferramentas e Técnicas
                             </Typography>
-                            <Typography sx={{ fontSize: '2rem', color: '#000', mb: 3, whiteSpace: 'pre-line', fontFamily: 'Glacial' }}>
+                            <Typography sx={{ fontSize: '1.5rem', color: '#000', mb: 3, whiteSpace: 'pre-line', fontFamily: 'Glacial' }}>
                                 • Edição de vídeos com CapCut (básico e truques)
                                 {'\n'}• Apps essenciais (Canva, Trello, etc.)
                                 {'\n'}• Escrita de legendas estratégicas e uso de hashtags
@@ -267,7 +267,7 @@ const MentoringPage: React.FC = () => {
                             <Typography variant="h3" sx={{ color: '#b83143', mb: 1, fontFamily: 'Glacial' }}>
                                 Módulo 4 – Métrica e Crescimento
                             </Typography>
-                            <Typography sx={{ fontSize: '2rem', color: '#000', mb: 3, whiteSpace: 'pre-line', fontFamily: 'Glacial' }}>
+                            <Typography sx={{ fontSize: '1.5rem', color: '#000', mb: 3, whiteSpace: 'pre-line', fontFamily: 'Glacial' }}>
                                 • Como ler métricas básicas e entender o que funciona
                                 {'\n'}• Como ajustar e planejar conteúdo baseado em dados
                             </Typography>
