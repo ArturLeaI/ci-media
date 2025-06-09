@@ -216,17 +216,14 @@ const MentoringPage: React.FC = () => {
                             transition={{ duration: 1.5, ease: 'easeOut' }}
                         >
                             <Typography
+                                
                                 sx={{
                                     color: '#b83143',
                                     fontWeight: 'bold',
                                     textAlign: 'left',
                                     fontFamily: 'Anton',
                                     mt: 1,
-                                    fontSize: {
-                                        xs: '2rem',
-                                        md: '2.5rem',
-                                        lg: '6rem',
-                                    },
+                                    fontSize: "1rem",
                                 }}
                             >
                                 O que você<br /> aprendera :
@@ -303,11 +300,11 @@ const MentoringPage: React.FC = () => {
                             transition={{ duration: 3, ease: 'easeOut' }}
                         >
                             <Typography variant="h3" sx={{
-                                color: '#b83143', mb: 1, fontFamily: 'Anton', fontSize: '4.5rem'
+                                color: '#b83143', mb: 1, fontFamily: 'Anton', fontSize: '5.5rem'
                             }}>
                                 CARGA HORARIA <br /> E MODALIDADE
                             </Typography>
-                            <Typography sx={{ fontSize: '2.0rem', color: '#000', mb: 3, whiteSpace: 'pre-line', fontFamily: 'Glacial' }}>
+                            <Typography sx={{ fontSize: '2.8rem', color: '#000', mb: 3, whiteSpace: 'pre-line', fontFamily: 'Glacial' }}>
                                 Duração: 4 horas de mentoria
                                 Modalidade:
                                 {'\n'} • On-line (via Google Meet)
@@ -331,12 +328,12 @@ const MentoringPage: React.FC = () => {
                                     textAlign: 'left',
                                     fontFamily: 'Anton',
                                     mt: 1,
-                                    fontSize: '4.5rem'
+                                    fontSize: '5.5rem'
                                 }}
                             >
                                 INVESTIMENTO
                             </Typography>
-                            <Typography sx={{ fontSize: '2rem', color: '#000', mb: 3, whiteSpace: 'pre-line', fontFamily: 'Glacial' }}>
+                            <Typography sx={{ fontSize: '3rem', color: '#000', mb: 3, whiteSpace: 'pre-line', fontFamily: 'Glacial' }}>
                                 R$ 797,00 dividido em até 12x<br /> pelo infinitepay<br />
                                 (inclui 1 encontro individual<br /> para personalização das estratégias<br /> e esclarecimento de dúvidas).
                             </Typography>
