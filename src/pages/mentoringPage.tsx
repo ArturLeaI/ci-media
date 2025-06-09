@@ -216,7 +216,6 @@ const MentoringPage: React.FC = () => {
                             transition={{ duration: 1.5, ease: 'easeOut' }}
                         >
                             <Typography
-                                variant="h5"
                                 sx={{
                                     color: '#b83143',
                                     fontWeight: 'bold',
