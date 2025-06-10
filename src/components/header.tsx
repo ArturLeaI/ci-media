@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { AppBar, Toolbar, Typography, Slide, useScrollTrigger, Box } from '@mui/material';
+import { useNavigate } from 'react-router-dom'
 
 const Header: React.FC = () => {
+  const navigate =useNavigate()
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -24,15 +26,16 @@ const Header: React.FC = () => {
 
   return (
     <Slide appear={false} direction="down" in={true}>
-      <AppBar position="fixed" elevation={4} sx={{ backgroundColor: 'rgba(184, 49, 67, 0.9)' }}>
+      <AppBar position="fixed" elevation={4} sx={{ backgroundColor: 'rgba(184, 49, 67)'}}>
         <Toolbar>
-          <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+          <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', }}>
             <Typography
               variant="h4"
               component="div"
-              sx={{ fontFamily: "'Miskan', sans-serif" }}
+              onClick={() => navigate('/')}
+              sx={{ fontFamily: "'Miskan', sans-serif", cursor: 'pointer', }}
             >
-              CI MEDIA
+              Ci Media
             </Typography>
           </Box>
         </Toolbar>

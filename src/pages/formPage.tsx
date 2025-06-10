@@ -15,9 +15,34 @@ import {
   Grid,
   Card,
   CardContent,
-  Divider
+  Divider,
+  Container,
+  Chip,
+  Avatar,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  CircularProgress,
+  Alert,
+  AlertTitle
 } from '@mui/material';
-// Definindo o schema de validação com Zod (mesmo do anterior)
+import {
+  CreditCard,
+  Security,
+  CheckCircle,
+  Star,
+  People,
+  Schedule,
+  TrendingUp,
+  EmojiEvents,
+  FlashOn,
+  AdsClick,
+  School,
+  Verified
+} from '@mui/icons-material';
+
+// Schema de validação
 const formSchema = z.object({
   // Dados Pessoais
   nomeCompleto: z.string().min(3, 'Nome deve ter pelo menos 3 caracteres'),
@@ -43,43 +68,137 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
+// Styled Components
+const MainContainer = styled(Box)(({ theme }) => ({
+  minHeight: '100vh',
+  backgroundImage: 'url(/images/Portifolio.png)',
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  padding: theme.spacing(2),
+}));
+
+const HeaderCard = styled(Paper)(({ theme }) => ({
+  background: 'rgba(255, 255, 255, 0.95)',
+  backdropFilter: 'blur(10px)',
+  borderRadius: theme.spacing(2),
+  padding: theme.spacing(3),
+  marginBottom: theme.spacing(2),
+  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+  marginTop:'50px',
+  maxWidth:'75vh',
+}));
+
+const ProductCard = styled(Card)(({ theme }) => ({
+  background: 'linear-gradient(135deg, #b83143 10%, #ff8494 100%)',
+  color: 'white',
+  borderRadius: theme.spacing(2),
+  overflow: 'hidden',
+  position: 'relative',
+  maxWidth:'80vh',
+  marginRight:'10vh',
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: 'rgba(255, 255, 255, 0.1)',
+    backdropFilter: 'blur(10px)',
+  }
+}));
+
 const FormContainer = styled(Paper)(({ theme }) => ({
-  backgroundColor: 'white',
-  borderRadius: theme.shape.borderRadius,
-  boxShadow: theme.shadows[3],
+  backgroundColor: 'rgba(255, 255, 255, 0.95)',
+  backdropFilter: 'blur(10px)',
+  borderRadius: theme.spacing(2),
+  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
   padding: theme.spacing(4),
-  maxWidth: 800,
-  margin: '0 auto',
+  position: 'relative',
+  maxWidth:'60vh',
+  marginTop:'50px',
 }));
 
 const SectionTitle = styled(Typography)(({ theme }) => ({
   color: '#b83143',
   marginBottom: theme.spacing(3),
   fontWeight: 'bold',
+  display: 'flex',
+  alignItems: 'center',
+  gap: theme.spacing(1),
 }));
 
 const SubmitButton = styled(Button)(({ theme }) => ({
-  backgroundColor: '#b83143',
+  background: 'linear-gradient(135deg, #b83143 15%, #ff8494 100%)',
   color: 'white',
-  padding: theme.spacing(1.5),
-  marginTop: theme.spacing(2),
+  padding: theme.spacing(2),
+  marginTop: theme.spacing(3),
+  borderRadius: theme.spacing(1),
+  fontSize: '1.1rem',
+  fontWeight: 'bold',
+  textTransform: 'none',
+  boxShadow: '0 4px 15px rgba(184, 49, 67, 0.4)',
   '&:hover': {
-    backgroundColor: '#9a2938',
+    background: 'linear-gradient(135deg, #a02a3a 0%, #e6758a 100%)',
+    boxShadow: '0 6px 20px rgba(184, 49, 67, 0.6)',
   },
+  '&:disabled': {
+    background: '#ccc',
+  }
 }));
 
 const SuccessCard = styled(Card)(({ theme }) => ({
-  backgroundColor: '#e6e8da',
-  color: '#000000',
+  background: 'linear-gradient(135deg, #48bb78 0%, #38a169 100%)',
+  color: 'white',
   textAlign: 'center',
   padding: theme.spacing(4),
   maxWidth: 600,
   margin: '0 auto',
+  borderRadius: theme.spacing(2),
+  boxShadow: '0 8px 32px rgba(72, 187, 120, 0.3)',
+}));
+
+const PriceBox = styled(Box)(({ theme }) => ({
+  background: 'rgba(255, 255, 255, 0.2)',
+  borderRadius: theme.spacing(1),
+  padding: theme.spacing(2),
+  textAlign: 'center',
+  backdropFilter: 'blur(10px)',
+}));
+
+const FeatureList = styled(List)(({ theme }) => ({
+  '& .MuiListItem-root': {
+    paddingLeft: 0,
+    paddingRight: 0,
+  },
+  '& .MuiListItemIcon-root': {
+    minWidth: theme.spacing(4),
+    color: 'rgba(255, 255, 255, 0.9)',
+  },
+  '& .MuiListItemText-primary': {
+    fontSize: '0.9rem',
+    color: 'rgba(255, 255, 255, 0.9)',
+  }
+}));
+
+const StatsBox = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'space-around',
+  marginTop: theme.spacing(2),
+  '& > div': {
+    textAlign: 'center',
+    padding: theme.spacing(1),
+    background: 'rgba(255, 255, 255, 0.1)',
+    borderRadius: theme.spacing(1),
+    backdropFilter: 'blur(5px)',
+    minWidth: '80px',
+  }
 }));
 
 const FormPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [orderData, setOrderData] = useState<any>(null);
 
   const {
     register,
@@ -94,17 +213,33 @@ const FormPage = () => {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     try {
+      // Simular tokenização do cartão
       await new Promise(resolve => setTimeout(resolve, 1000));
-      console.log('Dados enviados:', data);
+
+      // Simular processamento do pagamento
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      const mockOrderData = {
+        order_id: `ORD_${Date.now()}`,
+        status: 'paid',
+        customer: {
+          name: data.nomeCompleto,
+          email: data.email,
+          cpf: data.cpf,
+        },
+        amount: 49700, // R$ 497,00 em centavos
+      };
+
+      setOrderData(mockOrderData);
       setSubmitSuccess(true);
     } catch (error) {
-      console.error('Erro ao enviar formulário:', error);
+      console.error('Erro ao processar pagamento:', error);
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  // Funções de formatação (mesmas do anterior)
+  // Funções de formatação
   const formatCPF = (value: string) => {
     const nums = value.replace(/\D/g, '').slice(0, 11);
     if (nums.length <= 3) return nums;
@@ -148,7 +283,6 @@ const FormPage = () => {
     const cep = watch('cep')?.replace(/\D/g, '');
     if (cep?.length === 8) {
       try {
-        console.log(`Buscando endereço para CEP: ${cep}`);
         // Simulação de busca de CEP
         setValue('rua', 'Rua Exemplo');
         setValue('bairro', 'Centro');
@@ -160,459 +294,687 @@ const FormPage = () => {
     }
   };
 
-  if (submitSuccess) {
+  if (submitSuccess && orderData) {
     return (
-      <Box sx={{ backgroundColor: '#e6e8da', minHeight: '100vh', p: 4 }}>
-        <SuccessCard>
-          <CardContent>
-            <Typography variant="h4" sx={{ color: '#b83143', mb: 2 }} gutterBottom>
-              Cadastro realizado com sucesso!
-            </Typography>
-            <Typography variant="body1">
-              Obrigado por se cadastrar. Seus dados foram recebidos com sucesso.
-            </Typography>
-          </CardContent>
-        </SuccessCard>
-      </Box>
+      <MainContainer>
+        <Container maxWidth="md" sx={{ pt: 4 }}>
+          <SuccessCard>
+            <CardContent sx={{ position: 'relative', zIndex: 1 }}>
+              <Box sx={{ mb: 3 }}>
+                <Avatar sx={{
+                  bgcolor: 'rgba(255, 255, 255, 0.2)',
+                  width: 80,
+                  height: 80,
+                  mx: 'auto',
+                  mb: 2
+                }}>
+                  <CheckCircle sx={{ fontSize: 40, color: 'white' }} />
+                </Avatar>
+              </Box>
+
+              <Typography variant="h3" sx={{ fontWeight: 'bold', mb: 2 }}>
+                Pagamento Confirmado!
+              </Typography>
+
+              <Typography variant="h6" sx={{ mb: 4, opacity: 0.9 }}>
+                Obrigado pela sua compra! Você receberá um email com os detalhes da mentoria em breve.
+              </Typography>
+
+              <Paper sx={{
+                p: 3,
+                background: 'rgba(255, 255, 255, 0.2)',
+                backdropFilter: 'blur(10px)',
+                borderRadius: 2,
+                mb: 3
+              }}>
+                <Typography variant="h6" sx={{ mb: 2, fontWeight: 'bold' }}>
+                  Detalhes do Pedido
+                </Typography>
+                <Grid container spacing={2} sx={{ textAlign: 'left' }}>
+                  <Grid item xs={6}>
+                    <Typography variant="body2" sx={{ fontWeight: 'bold' }}>Nome:</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Typography variant="body2">{orderData.customer.name}</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Typography variant="body2" sx={{ fontWeight: 'bold' }}>Email:</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Typography variant="body2" sx={{ wordBreak: 'break-all' }}>
+                      {orderData.customer.email}
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Typography variant="body2" sx={{ fontWeight: 'bold' }}>CPF:</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Typography variant="body2">{orderData.customer.cpf}</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Typography variant="body2" sx={{ fontWeight: 'bold' }}>Pedido ID:</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Typography variant="body2" sx={{ fontFamily: 'monospace', fontSize: '0.8rem' }}>
+                      {orderData.order_id}
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Typography variant="body2" sx={{ fontWeight: 'bold' }}>Status:</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Chip
+                      label="Pago"
+                      color="success"
+                      size="small"
+                      sx={{
+                        background: 'rgba(255, 255, 255, 0.3)',
+                        color: 'white',
+                        fontWeight: 'bold'
+                      }}
+                    />
+                  </Grid>
+                </Grid>
+              </Paper>
+
+              <Button
+                variant="contained"
+                onClick={() => window.location.reload()}
+                sx={{
+                  background: 'rgba(255, 255, 255, 0.2)',
+                  color: 'white',
+                  fontWeight: 'bold',
+                  px: 4,
+                  py: 1.5,
+                  '&:hover': {
+                    background: 'rgba(255, 255, 255, 0.3)',
+                  }
+                }}
+              >
+                Fazer Nova Compra
+              </Button>
+            </CardContent>
+          </SuccessCard>
+        </Container>
+      </MainContainer>
     );
   }
 
   return (
-    <Box sx={{
-      backgroundImage: 'url(/images/intro.png)',
-      minHeight: '100vh',
-      p: 4,
-      backgroundSize: 'cover',
-      overflow: 'hidden',
-      height: '100%',
-      margin: '0',
-      padding: '0'
+    <MainContainer>
+      <Container maxWidth="xl" sx={{ py: 2 }}>
+        <Grid container spacing={3}>
+          {/* Coluna Esquerda - Header e Product Cards */}
+          <Grid item xs={12} lg={5}>
+            {/* Header Card */}
+            <HeaderCard>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 2 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                  <Avatar sx={{
+                    background: 'linear-gradient(135deg, #b83143 0%, #ff8494 100%)',
+                    width: 50,
+                    height: 50
+                  }}>
+                    <TrendingUp />
+                  </Avatar>
+                  <Box>
+                    <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#2d3748' }}>
+                      Mentoria
+                    </Typography>
+                    <Typography variant="subtitle1" sx={{ color: '#718096' }}>
+                      Transforme seu negócio com estratégias comprovadas
+                    </Typography>
+                  </Box>
+                </Box>
+                <Chip
+                  icon={<Security />}
+                  label="Pagamento 100% Seguro"
+                  color="success"
+                  variant="outlined"
+                  sx={{ fontWeight: 'bold' }}
+                />
+              </Box>
+            </HeaderCard>
 
-    }}>
-        <FormContainer sx={{
-          borderRadius: 5,
-          p: 3,
-          top: '15%',
-          position: 'absolute',
-          right: '10%',
-          backgroundColor: '#e6e8da',
-          maxHeight: '75vh',        // ou 100vh menos o padding
-          overflowY: 'auto',
-          maxWidth: '79vh'
-        }}>
-          <SectionTitle variant="h4" gutterBottom>
-            Formulário de Cadastro
-          </SectionTitle>
+            {/* Product Card */}
+            <ProductCard>
+              <CardContent sx={{ position: 'relative', zIndex: 1 }}>
+                {/* Header do Produto */}
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                    <Star sx={{ color: '#ffd700' }} />
+                    <Chip
+                      label="OFERTA LIMITADA"
+                      size="small"
+                      sx={{
+                        background: 'rgba(255, 255, 255, 0.2)',
+                        color: 'white',
+                        fontWeight: 'bold'
+                      }}
+                    />
+                  </Box>
+                  <PriceBox>
+                    <Typography variant="body2" sx={{ textDecoration: 'line-through', opacity: 0.7 }}>
+                      R$ 1.594,00
+                    </Typography>
+                    <Typography variant="h4" sx={{ fontWeight: 'bold' }}>
+                      R$ 797,00
+                    </Typography>
+                    <Typography variant="caption" sx={{ color: '#ffd700' }}>
+                      50% de desconto
+                    </Typography>
+                  </PriceBox>
+                </Box>
 
-          <form onSubmit={handleSubmit(onSubmit)}>
-            {/* Seção Dados Pessoais */}
-            <Box component="fieldset" sx={{ border: 'none', p: 0, m: 0 }}>
-              <FormLabel component="legend" sx={{ backgroundColor: '#e6e8da', color: '#b83143', mb: 3, fontWeight: 'bold' }}>
-                Dados Pessoais
-              </FormLabel>
+                <Typography variant="h5" sx={{ fontWeight: 'bold', mb: 2 }}>
+                  Mentoria Completa
+                </Typography>
 
-              <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    sx={{
-                      '& label.Mui-focused': {
-                        color: '#b83143',
-                      },
-                      '& .MuiOutlinedInput-root': {
-                        '&.Mui-focused fieldset': {
-                          borderColor: '#b83143',
-                        },
-                      },
-                    }}
-                    label="Nome Completo"
-                    {...register('nomeCompleto')}
-                    error={!!errors.nomeCompleto}
-                    helperText={errors.nomeCompleto?.message}
-                    fullWidth
-                    variant="outlined"
-                    margin="normal"
-                  />
-                </Grid>
+                <Typography variant="body1" sx={{ mb: 3, opacity: 0.9 }}>
+                  Aprenda as estratégias mais eficazes para criar campanhas publicitárias de sucesso e multiplicar seus resultados
+                </Typography>
 
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    sx={{
-                      '& label.Mui-focused': {
-                        color: '#b83143',
-                      },
-                      '& .MuiOutlinedInput-root': {
-                        '&.Mui-focused fieldset': {
-                          borderColor: '#b83143',
-                        },
-                      },
-                    }}
-                    label="Email"
-                    type="email"
-                    {...register('email')}
-                    error={!!errors.email}
-                    helperText={errors.email?.message}
-                    fullWidth
-                    variant="outlined"
-                    margin="normal"
-                  />
-                </Grid>
+                {/* O que você vai aprender */}
+                <Paper sx={{
+                  p: 3,
+                  mb: 3,
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  backdropFilter: 'blur(10px)',
+                  borderRadius: 2
+                }}>
+                  <Typography variant="h6" sx={{
+                    fontWeight: 'bold',
+                    mb: 2,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 1
+                  }}>
+                    <AdsClick />
+                    O que você vai aprender:
+                  </Typography>
 
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    sx={{
-                      '& label.Mui-focused': {
-                        color: '#b83143',
-                      },
-                      '& .MuiOutlinedInput-root': {
-                        '&.Mui-focused fieldset': {
-                          borderColor: '#b83143',
-                        },
-                      },
-                    }}
-                    label="CPF"
-                    {...register('cpf')}
-                    onChange={(e) => {
-                      const formattedValue = formatCPF(e.target.value);
-                      e.target.value = formattedValue;
-                      setValue('cpf', formattedValue);
-                    }}
-                    error={!!errors.cpf}
-                    helperText={errors.cpf?.message}
-                    fullWidth
-                    variant="outlined"
-                    margin="normal"
-                    placeholder="000.000.000-00"
-                  />
-                </Grid>
+                  <FeatureList dense>
+                    <ListItem>
+                      <ListItemIcon>
+                        <FlashOn />
+                      </ListItemIcon>
+                      <ListItemText primary="Presença com Propósito" />
+                    </ListItem>
+                    <ListItem>
+                      <ListItemIcon>
+                        <FlashOn />
+                      </ListItemIcon>
+                      <ListItemText primary="Conteúdo que Conecta" />
+                    </ListItem>
+                    <ListItem>
+                      <ListItemIcon>
+                        <FlashOn />
+                      </ListItemIcon>
+                      <ListItemText primary="Ferramentas e Técnicas" />
+                    </ListItem>
+                    <ListItem>
+                      <ListItemIcon>
+                        <FlashOn />
+                      </ListItemIcon>
+                      <ListItemText primary="Métrica e Crescimento" />
+                    </ListItem>
+                  </FeatureList>
+                </Paper>
 
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    sx={{
-                      '& label.Mui-focused': {
-                        color: '#b83143',
-                      },
-                      '& .MuiOutlinedInput-root': {
-                        '&.Mui-focused fieldset': {
-                          borderColor: '#b83143',
-                        },
-                      },
-                    }}
-                    label="Telefone"
-                    {...register('telefone')}
-                    onChange={(e) => {
-                      const formattedValue = formatTelefone(e.target.value);
-                      e.target.value = formattedValue;
-                      setValue('telefone', formattedValue);
-                    }}
-                    error={!!errors.telefone}
-                    helperText={errors.telefone?.message}
-                    fullWidth
-                    variant="outlined"
-                    margin="normal"
-                    placeholder="(00) 00000-0000"
-                  />
-                </Grid>
-              </Grid>
-            </Box>
+                <Divider sx={{ my: 3, borderColor: 'rgba(255, 255, 255, 0.3)' }} />
 
-            <Divider sx={{ my: 3, backgroundColor: '#000000' }} />
+                {/* Total */}
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+                    Total:
+                  </Typography>
+                  <Box sx={{ textAlign: 'right' }}>
+                    <Typography variant="body2" sx={{ textDecoration: 'line-through', opacity: 0.7 }}>
+                      R$ 1.594,00
+                    </Typography>
+                    <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#ffd700' }}>
+                      R$ 797,00
+                    </Typography>
+                  </Box>
+                </Box>
+              </CardContent>
+            </ProductCard>
+          </Grid>
 
-            {/* Seção Endereço */}
-            <Box component="fieldset" sx={{ border: 'none', p: 0, m: 0 }}>
-              <FormLabel component="legend" sx={{ color: '#b83143', mb: 2, fontWeight: 'bold' }}>
-                Endereço
-              </FormLabel>
+          {/* Coluna Direita - Formulário de Pagamento */}
+          <Grid item xs={12} lg={7}>
+            <FormContainer>
+              <SectionTitle variant="h5">
+                <CreditCard />
+                Finalizar Pagamento
+              </SectionTitle>
 
-              <Grid container spacing={2}>
-                <Grid item xs={12} sm={4}>
-                  <TextField
-                    sx={{
-                      '& label.Mui-focused': {
-                        color: '#b83143',
-                      },
-                      '& .MuiOutlinedInput-root': {
-                        '&.Mui-focused fieldset': {
-                          borderColor: '#b83143',
-                        },
-                      },
-                    }}
-                    label="CEP"
-                    {...register('cep')}
-                    onChange={(e) => {
-                      const formattedValue = formatCEP(e.target.value);
-                      e.target.value = formattedValue;
-                      setValue('cep', formattedValue);
-                    }}
-                    onBlur={buscarEnderecoPorCEP}
-                    error={!!errors.cep}
-                    helperText={errors.cep?.message}
-                    fullWidth
-                    variant="outlined"
-                    margin="normal"
-                    placeholder="00000-000"
-                  />
-                </Grid>
+              <Typography variant="body1" sx={{ mb: 4, color: '#718096' }}>
+                Preencha seus dados para garantir seu acesso à mentoria
+              </Typography>
 
-                <Grid item xs={12} sm={8}>
-                  <TextField
-                    sx={{
-                      '& label.Mui-focused': {
-                        color: '#b83143',
-                      },
-                      '& .MuiOutlinedInput-root': {
-                        '&.Mui-focused fieldset': {
-                          borderColor: '#b83143',
-                        },
-                      },
-                    }}
-                    label="Rua"
-                    {...register('rua')}
-                    error={!!errors.rua}
-                    helperText={errors.rua?.message}
-                    fullWidth
-                    variant="outlined"
-                    margin="normal"
-                  />
-                </Grid>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                {/* Dados Pessoais */}
+                <Box sx={{ mb: 4 }}>
+                  <SectionTitle variant="h6">
+                    <School />
+                    Dados Pessoais
+                  </SectionTitle>
 
-                <Grid item xs={12} sm={3}>
-                  <TextField
-                    sx={{
-                      '& label.Mui-focused': {
-                        color: '#b83143',
-                      },
-                      '& .MuiOutlinedInput-root': {
-                        '&.Mui-focused fieldset': {
-                          borderColor: '#b83143',
-                        },
-                      },
-                    }}
-                    label="Número"
-                    {...register('numero')}
-                    error={!!errors.numero}
-                    helperText={errors.numero?.message}
-                    fullWidth
-                    variant="outlined"
-                    margin="normal"
-                  />
-                </Grid>
+                  <Grid container spacing={3}>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        label="Nome Completo"
+                        {...register('nomeCompleto')}
+                        error={!!errors.nomeCompleto}
+                        helperText={errors.nomeCompleto?.message}
+                        fullWidth
+                        variant="outlined"
+                        sx={{
+                          '& .MuiOutlinedInput-root': {
+                            '&.Mui-focused fieldset': {
+                              borderColor: '#b83143',
+                            },
+                          },
+                          '& .MuiInputLabel-root.Mui-focused': {
+                            color: '#b83143',
+                          },
+                        }}
+                      />
+                    </Grid>
 
-                <Grid item xs={12} sm={9}>
-                  <TextField
-                    sx={{
-                      '& label.Mui-focused': {
-                        color: '#b83143',
-                      },
-                      '& .MuiOutlinedInput-root': {
-                        '&.Mui-focused fieldset': {
-                          borderColor: '#b83143',
-                        },
-                      },
-                    }}
-                    label="Complemento (opcional)"
-                    {...register('complemento')}
-                    fullWidth
-                    variant="outlined"
-                    margin="normal"
-                  />
-                </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        label="CPF"
+                        {...register('cpf')}
+                        onChange={(e) => {
+                          const formattedValue = formatCPF(e.target.value);
+                          e.target.value = formattedValue;
+                          setValue('cpf', formattedValue);
+                        }}
+                        error={!!errors.cpf}
+                        helperText={errors.cpf?.message}
+                        fullWidth
+                        variant="outlined"
+                        placeholder="000.000.000-00"
+                        sx={{
+                          '& .MuiOutlinedInput-root': {
+                            '&.Mui-focused fieldset': {
+                              borderColor: '#b83143',
+                            },
+                          },
+                          '& .MuiInputLabel-root.Mui-focused': {
+                            color: '#b83143',
+                          },
+                        }}
+                      />
+                    </Grid>
 
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    sx={{
-                      '& label.Mui-focused': {
-                        color: '#b83143',
-                      },
-                      '& .MuiOutlinedInput-root': {
-                        '&.Mui-focused fieldset': {
-                          borderColor: '#b83143',
-                        },
-                      },
-                    }}
-                    label="Bairro"
-                    {...register('bairro')}
-                    error={!!errors.bairro}
-                    helperText={errors.bairro?.message}
-                    fullWidth
-                    variant="outlined"
-                    margin="normal"
-                  />
-                </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        label="Email"
+                        type="email"
+                        {...register('email')}
+                        error={!!errors.email}
+                        helperText={errors.email?.message}
+                        fullWidth
+                        variant="outlined"
+                        sx={{
+                          '& .MuiOutlinedInput-root': {
+                            '&.Mui-focused fieldset': {
+                              borderColor: '#b83143',
+                            },
+                          },
+                          '& .MuiInputLabel-root.Mui-focused': {
+                            color: '#b83143',
+                          },
+                        }}
+                      />
+                    </Grid>
 
-                <Grid item xs={12} sm={4}>
-                  <TextField
-                    sx={{
-                      '& label.Mui-focused': {
-                        color: '#b83143',
-                      },
-                      '& .MuiOutlinedInput-root': {
-                        '&.Mui-focused fieldset': {
-                          borderColor: '#b83143',
-                        },
-                      },
-                    }}
-                    label="Cidade"
-                    {...register('cidade')}
-                    error={!!errors.cidade}
-                    helperText={errors.cidade?.message}
-                    fullWidth
-                    variant="outlined"
-                    margin="normal"
-                  />
-                </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        label="Telefone"
+                        {...register('telefone')}
+                        onChange={(e) => {
+                          const formattedValue = formatTelefone(e.target.value);
+                          e.target.value = formattedValue;
+                          setValue('telefone', formattedValue);
+                        }}
+                        error={!!errors.telefone}
+                        helperText={errors.telefone?.message}
+                        fullWidth
+                        variant="outlined"
+                        placeholder="(00) 00000-0000"
+                        sx={{
+                          '& .MuiOutlinedInput-root': {
+                            '&.Mui-focused fieldset': {
+                              borderColor: '#b83143',
+                            },
+                          },
+                          '& .MuiInputLabel-root.Mui-focused': {
+                            color: '#b83143',
+                          },
+                        }}
+                      />
+                    </Grid>
+                  </Grid>
+                </Box>
 
-                <Grid item xs={12} sm={2}>
-                  <TextField
-                    sx={{
-                      '& label.Mui-focused': {
-                        color: '#b83143',
-                      },
-                      '& .MuiOutlinedInput-root': {
-                        '&.Mui-focused fieldset': {
-                          borderColor: '#b83143',
-                        },
-                      },
-                    }}
-                    label="Estado (UF)"
-                    {...register('estado')}
-                    error={!!errors.estado}
-                    helperText={errors.estado?.message}
-                    fullWidth
-                    variant="outlined"
-                    margin="normal"
-                    placeholder="SP"
-                    inputProps={{ maxLength: 2, style: { textTransform: 'uppercase' } }}
-                  />
-                </Grid>
-              </Grid>
-            </Box>
+                <Divider sx={{ my: 4 }} />
 
-            <Divider sx={{ my: 3, backgroundColor: '#000000' }} />
+                {/* Endereço */}
+                <Box sx={{ mb: 4 }}>
+                  <SectionTitle variant="h6">
+                    Endereço
+                  </SectionTitle>
 
-            {/* Seção Dados do Cartão */}
-            <Box component="form" sx={{ border: 'none', p: 0, m: 0 }}>
-              <FormLabel component="legend" sx={{ color: '#b83143', mb: 3, fontWeight: 'bold' }}>
-                Dados do Cartão
-              </FormLabel>
+                  <Grid container spacing={3}>
+                    <Grid item xs={12} sm={4}>
+                      <TextField
+                        label="CEP"
+                        {...register('cep')}
+                        onChange={(e) => {
+                          const formattedValue = formatCEP(e.target.value);
+                          e.target.value = formattedValue;
+                          setValue('cep', formattedValue);
+                        }}
+                        onBlur={buscarEnderecoPorCEP}
+                        error={!!errors.cep}
+                        helperText={errors.cep?.message}
+                        fullWidth
+                        variant="outlined"
+                        placeholder="00000-000"
+                        sx={{
+                          '& .MuiOutlinedInput-root': {
+                            '&.Mui-focused fieldset': {
+                              borderColor: '#b83143',
+                            },
+                          },
+                          '& .MuiInputLabel-root.Mui-focused': {
+                            color: '#b83143',
+                          },
+                        }}
+                      />
+                    </Grid>
 
-              <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    sx={{
-                      '& label.Mui-focused': {
-                        color: '#b83143',
-                      },
-                      '& .MuiOutlinedInput-root': {
-                        '&.Mui-focused fieldset': {
-                          borderColor: '#b83143',
-                        },
-                      },
-                    }}
-                    label="Número do Cartão"
-                    {...register('numeroCartao')}
-                    onChange={(e) => {
-                      const formattedValue = formatCartao(e.target.value);
-                      e.target.value = formattedValue;
-                      setValue('numeroCartao', formattedValue);
-                    }}
-                    error={!!errors.numeroCartao}
-                    helperText={errors.numeroCartao?.message}
-                    fullWidth
-                    variant="outlined"
-                    margin="normal"
-                    placeholder="0000 0000 0000 0000"
-                  />
-                </Grid>
+                    <Grid item xs={12} sm={8}>
+                      <TextField
+                        label="Rua"
+                        {...register('rua')}
+                        error={!!errors.rua}
+                        helperText={errors.rua?.message}
+                        fullWidth
+                        variant="outlined"
+                        sx={{
+                          '& .MuiOutlinedInput-root': {
+                            '&.Mui-focused fieldset': {
+                              borderColor: '#b83143',
+                            },
+                          },
+                          '& .MuiInputLabel-root.Mui-focused': {
+                            color: '#b83143',
+                          },
+                        }}
+                      />
+                    </Grid>
 
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    sx={{
-                      '& label.Mui-focused': {
-                        color: '#b83143',
-                      },
-                      '& .MuiOutlinedInput-root': {
-                        '&.Mui-focused fieldset': {
-                          borderColor: '#b83143',
-                        },
-                      },
-                    }}
-                    label="Nome no Cartão"
-                    {...register('nomeCartao')}
-                    error={!!errors.nomeCartao}
-                    helperText={errors.nomeCartao?.message}
-                    fullWidth
-                    variant="outlined"
-                    margin="normal"
-                  />
-                </Grid>
+                    <Grid item xs={12} sm={3}>
+                      <TextField
+                        label="Número"
+                        {...register('numero')}
+                        error={!!errors.numero}
+                        helperText={errors.numero?.message}
+                        fullWidth
+                        variant="outlined"
+                        sx={{
+                          '& .MuiOutlinedInput-root': {
+                            '&.Mui-focused fieldset': {
+                              borderColor: '#b83143',
+                            },
+                          },
+                          '& .MuiInputLabel-root.Mui-focused': {
+                            color: '#b83143',
+                          },
+                        }}
+                      />
+                    </Grid>
 
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    sx={{
-                      '& label.Mui-focused': {
-                        color: '#b83143',
-                      },
-                      '& .MuiOutlinedInput-root': {
-                        '&.Mui-focused fieldset': {
-                          borderColor: '#b83143',
-                        },
-                      },
-                    }}
-                    label="Validade (MM/AA)"
-                    {...register('validadeCartao')}
-                    onChange={(e) => {
-                      const formattedValue = formatValidade(e.target.value);
-                      e.target.value = formattedValue;
-                      setValue('validadeCartao', formattedValue);
-                    }}
-                    error={!!errors.validadeCartao}
-                    helperText={errors.validadeCartao?.message}
-                    fullWidth
-                    variant="outlined"
-                    margin="normal"
-                    placeholder="MM/AA"
-                  />
-                </Grid>
+                    <Grid item xs={12} sm={9}>
+                      <TextField
+                        label="Complemento (opcional)"
+                        {...register('complemento')}
+                        fullWidth
+                        variant="outlined"
+                        sx={{
+                          '& .MuiOutlinedInput-root': {
+                            '&.Mui-focused fieldset': {
+                              borderColor: '#b83143',
+                            },
+                          },
+                          '& .MuiInputLabel-root.Mui-focused': {
+                            color: '#b83143',
+                          },
+                        }}
+                      />
+                    </Grid>
 
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    sx={{
-                      '& label.Mui-focused': {
-                        color: '#b83143',
-                      },
-                      '& .MuiOutlinedInput-root': {
-                        '&.Mui-focused fieldset': {
-                          borderColor: '#b83143',
-                        },
-                      },
-                    }}
-                    label="CVV"
-                    type="password"
-                    {...register('cvv')}
-                    error={!!errors.cvv}
-                    helperText={errors.cvv?.message}
-                    fullWidth
-                    variant="outlined"
-                    margin="normal"
-                    placeholder="000"
-                    inputProps={{ maxLength: 4 }}
-                  />
-                </Grid>
-              </Grid>
-            </Box>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        label="Bairro"
+                        {...register('bairro')}
+                        error={!!errors.bairro}
+                        helperText={errors.bairro?.message}
+                        fullWidth
+                        variant="outlined"
+                        sx={{
+                          '& .MuiOutlinedInput-root': {
+                            '&.Mui-focused fieldset': {
+                              borderColor: '#b83143',
+                            },
+                          },
+                          '& .MuiInputLabel-root.Mui-focused': {
+                            color: '#b83143',
+                          },
+                        }}
+                      />
+                    </Grid>
 
-            <SubmitButton
-              type="submit"
-              variant="contained"
-              disabled={isSubmitting}
-              fullWidth
-              size="large"
-            >
-              {isSubmitting ? 'Enviando...' : 'Cadastrar'}
-            </SubmitButton>
-          </form>
-        </FormContainer>
-    </Box>
+                    <Grid item xs={12} sm={4}>
+                      <TextField
+                        label="Cidade"
+                        {...register('cidade')}
+                        error={!!errors.cidade}
+                        helperText={errors.cidade?.message}
+                        fullWidth
+                        variant="outlined"
+                        sx={{
+                          '& .MuiOutlinedInput-root': {
+                            '&.Mui-focused fieldset': {
+                              borderColor: '#b83143',
+                            },
+                          },
+                          '& .MuiInputLabel-root.Mui-focused': {
+                            color: '#b83143',
+                          },
+                        }}
+                      />
+                    </Grid>
+
+                    <Grid item xs={12} sm={2}>
+                      <TextField
+                        label="Estado (UF)"
+                        {...register('estado')}
+                        error={!!errors.estado}
+                        helperText={errors.estado?.message}
+                        fullWidth
+                        variant="outlined"
+                        placeholder="SP"
+                        inputProps={{ maxLength: 2, style: { textTransform: 'uppercase' } }}
+                        sx={{
+                          '& .MuiOutlinedInput-root': {
+                            '&.Mui-focused fieldset': {
+                              borderColor: '#b83143',
+                            },
+                          },
+                          '& .MuiInputLabel-root.Mui-focused': {
+                            color: '#b83143',
+                          },
+                        }}
+                      />
+                    </Grid>
+                  </Grid>
+                </Box>
+
+                <Divider sx={{ my: 4 }} />
+
+                {/* Dados do Cartão */}
+                <Box sx={{ mb: 4 }}>
+                  <SectionTitle variant="h6">
+                    <CreditCard />
+                    Dados do Cartão
+                  </SectionTitle>
+
+                  <Grid container spacing={3}>
+                    <Grid item xs={12}>
+                      <TextField
+                        label="Número do Cartão"
+                        {...register('numeroCartao')}
+                        onChange={(e) => {
+                          const formattedValue = formatCartao(e.target.value);
+                          e.target.value = formattedValue;
+                          setValue('numeroCartao', formattedValue);
+                        }}
+                        error={!!errors.numeroCartao}
+                        helperText={errors.numeroCartao?.message}
+                        fullWidth
+                        variant="outlined"
+                        placeholder="0000 0000 0000 0000"
+                        sx={{
+                          '& .MuiOutlinedInput-root': {
+                            '&.Mui-focused fieldset': {
+                              borderColor: '#b83143',
+                            },
+                          },
+                          '& .MuiInputLabel-root.Mui-focused': {
+                            color: '#b83143',
+                          },
+                        }}
+                      />
+                    </Grid>
+
+                    <Grid item xs={12}>
+                      <TextField
+                        label="Nome no Cartão"
+                        {...register('nomeCartao')}
+                        error={!!errors.nomeCartao}
+                        helperText={errors.nomeCartao?.message}
+                        fullWidth
+                        variant="outlined"
+                        sx={{
+                          '& .MuiOutlinedInput-root': {
+                            '&.Mui-focused fieldset': {
+                              borderColor: '#b83143',
+                            },
+                          },
+                          '& .MuiInputLabel-root.Mui-focused': {
+                            color: '#b83143',
+                          },
+                        }}
+                      />
+                    </Grid>
+
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        label="Validade (MM/AA)"
+                        {...register('validadeCartao')}
+                        onChange={(e) => {
+                          const formattedValue = formatValidade(e.target.value);
+                          e.target.value = formattedValue;
+                          setValue('validadeCartao', formattedValue);
+                        }}
+                        error={!!errors.validadeCartao}
+                        helperText={errors.validadeCartao?.message}
+                        fullWidth
+                        variant="outlined"
+                        placeholder="MM/AA"
+                        sx={{
+                          '& .MuiOutlinedInput-root': {
+                            '&.Mui-focused fieldset': {
+                              borderColor: '#b83143',
+                            },
+                          },
+                          '& .MuiInputLabel-root.Mui-focused': {
+                            color: '#b83143',
+                          },
+                        }}
+                      />
+                    </Grid>
+
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        label="CVV"
+                        type="password"
+                        {...register('cvv')}
+                        error={!!errors.cvv}
+                        helperText={errors.cvv?.message}
+                        fullWidth
+                        variant="outlined"
+                        placeholder="000"
+                        inputProps={{ maxLength: 4 }}
+                        sx={{
+                          '& .MuiOutlinedInput-root': {
+                            '&.Mui-focused fieldset': {
+                              borderColor: '#b83143',
+                            },
+                          },
+                          '& .MuiInputLabel-root.Mui-focused': {
+                            color: '#b83143',
+                          },
+                        }}
+                      />
+                    </Grid>
+                  </Grid>
+                </Box>
+
+                <SubmitButton
+                  type="submit"
+                  variant="contained"
+                  disabled={isSubmitting}
+                  fullWidth
+                  size="large"
+                  startIcon={isSubmitting ? <CircularProgress size={20} color="inherit" /> : null}
+                >
+                  {isSubmitting ? 'Processando Pagamento...' : 'Finalizar Compra - R$ 797,00'}
+                </SubmitButton>
+
+                <Alert
+                  severity="info"
+                  sx={{
+                    mt: 3,
+                    background: 'rgba(184, 49, 67, 0.1)',
+                    '& .MuiAlert-icon': {
+                      color: '#b83143'
+                    }
+                  }}
+                  icon={<Security />}
+                >
+                  <AlertTitle sx={{ color: '#b83143', fontWeight: 'bold' }}>
+                    Pagamento Seguro
+                  </AlertTitle>
+                  Seus dados estão protegidos com criptografia SSL de 256 bits
+                  <br />
+                  <Typography variant="caption" sx={{ color: '#718096' }}>
+                    Aceito em todo o Brasil • Sem taxas adicionais • Pagamento 100% seguro
+                  </Typography>
+                </Alert>
+              </form>
+            </FormContainer>
+          </Grid>
+        </Grid>
+      </Container>
+    </MainContainer>
   );
-}
-export default FormPage
+};
+
+export default FormPage;
