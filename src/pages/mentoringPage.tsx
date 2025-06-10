@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Box, Grid, Typography, useTheme, useMediaQuery, Container } from '@mui/material';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const MentoringPage: React.FC = () => {
     const [visible, setVisible] = useState(false);
@@ -9,7 +10,7 @@ const MentoringPage: React.FC = () => {
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
     const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
-
+    const navigate = useNavigate();
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
@@ -266,8 +267,8 @@ const MentoringPage: React.FC = () => {
                 }}
             >
                 <Container maxWidth="xl">
-                    <Grid container spacing={{ xs: 4, md: 6, lg:45 }} alignItems="flex-start">
-                        <Grid item xs={12} lg={4} sx={{ pl: { lg: 15} }} >
+                    <Grid container spacing={{ xs: 4, md: 6, lg: 45 }} alignItems="flex-start">
+                        <Grid item xs={12} lg={4} sx={{ pl: { lg: 15 } }} >
                             <motion.div
                                 initial={{ x: -50, opacity: 0 }}
                                 whileInView={{ x: 0, opacity: 1 }}
@@ -297,7 +298,7 @@ const MentoringPage: React.FC = () => {
                             </motion.div>
                         </Grid>
 
-                        <Grid item xs={12} lg={8} sx={{ pl: { lg: 10} }}>
+                        <Grid item xs={12} lg={8} sx={{ pl: { lg: 10 } }}>
                             <motion.div
                                 initial={{ x: 50, opacity: 0 }}
                                 whileInView={{ x: 0, opacity: 1 }}
@@ -536,7 +537,7 @@ const MentoringPage: React.FC = () => {
                 <Container maxWidth="xl">
                     <Grid container spacing={{ xs: 4, md: 6, lg: 8 }} alignItems="flex-start">
                         <Grid item xs={12} lg={5} order={{ xs: 1, lg: 15 }} sx={{
-                            ml: { lg: 'auto' }, 
+                            ml: { lg: 'auto' },
                             textAlign: { xs: 'center', lg: 'right' },
                         }}>
                             <motion.div
@@ -602,7 +603,7 @@ const MentoringPage: React.FC = () => {
                     borderTop: '1px solid rgba(184, 49, 67, 0.2)'
                 }}
             >
-                <Container maxWidth="lg">
+                <Container maxWidth="lg" onClick={() => navigate('/form')}>
                     <motion.div
                         initial={{ y: 50, opacity: 0 }}
                         whileInView={{ y: 0, opacity: 1 }}
@@ -610,9 +611,11 @@ const MentoringPage: React.FC = () => {
                         transition={{ duration: 1.2, ease: 'easeOut' }}
                     >
                         <Typography
+                            
                             variant="h3"
                             sx={{
                                 color: '#b83143',
+                                cursor: 'pointer',
                                 fontFamily: 'Anton',
                                 fontSize: {
                                     xs: '2.5rem',
