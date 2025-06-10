@@ -266,8 +266,8 @@ const MentoringPage: React.FC = () => {
                 }}
             >
                 <Container maxWidth="xl">
-                    <Grid container spacing={{ xs: 4, md: 6, lg: 8 }} alignItems="flex-start">
-                        <Grid item xs={12} lg={4}>
+                    <Grid container spacing={{ xs: 4, md: 6, lg:45 }} alignItems="flex-start">
+                        <Grid item xs={12} lg={4} sx={{ pl: { lg: 15} }} >
                             <motion.div
                                 initial={{ x: -50, opacity: 0 }}
                                 whileInView={{ x: 0, opacity: 1 }}
@@ -276,6 +276,7 @@ const MentoringPage: React.FC = () => {
                             >
                                 <Typography
                                     sx={{
+                                        mt: { lg: 30 },
                                         color: '#b83143',
                                         fontWeight: 'bold',
                                         textAlign: { xs: 'center', lg: 'left' },
@@ -296,7 +297,7 @@ const MentoringPage: React.FC = () => {
                             </motion.div>
                         </Grid>
 
-                        <Grid item xs={12} lg={8}>
+                        <Grid item xs={12} lg={8} sx={{ pl: { lg: 10} }}>
                             <motion.div
                                 initial={{ x: 50, opacity: 0 }}
                                 whileInView={{ x: 0, opacity: 1 }}
@@ -466,7 +467,6 @@ const MentoringPage: React.FC = () => {
                 </Container>
             </Box>
 
-            {/* Seção 5: Carga horária e investimento */}
             <Box
                 sx={{
                     backgroundColor: '#e6e8da',
@@ -476,7 +476,6 @@ const MentoringPage: React.FC = () => {
             >
                 <Container maxWidth="xl">
                     <Grid container spacing={{ xs: 4, md: 6, lg: 8 }} alignItems="flex-start">
-                        {/* Carga Horária */}
                         <Grid item xs={12} lg={7} order={{ xs: 2, lg: 1 }}>
                             <motion.div
                                 initial={{ x: -50, opacity: 0 }}
@@ -524,9 +523,22 @@ const MentoringPage: React.FC = () => {
                                 </Typography>
                             </motion.div>
                         </Grid>
+                    </Grid>
+                </Container>
+            </Box>
 
-                        {/* Investimento */}
-                        <Grid item xs={12}   lg={5} order={{ xs: 1, lg: 15 }}>
+            <Box
+                sx={{
+                    backgroundColor: '#e6e8da',
+                    py: { xs: 6, sm: 5, md: 5 },
+                }}
+            >
+                <Container maxWidth="xl">
+                    <Grid container spacing={{ xs: 4, md: 6, lg: 8 }} alignItems="flex-start">
+                        <Grid item xs={12} lg={5} order={{ xs: 1, lg: 15 }} sx={{
+                            ml: { lg: 'auto' }, 
+                            textAlign: { xs: 'center', lg: 'right' },
+                        }}>
                             <motion.div
                                 initial={{ x: 50, opacity: 0 }}
                                 whileInView={{ x: 0, opacity: 1 }}
