@@ -1,21 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { AppBar, Toolbar, Typography, Slide, useScrollTrigger, Box } from '@mui/material';
+import { AppBar, Toolbar, Typography, Slide, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom'
 
 const Header: React.FC = () => {
   const navigate =useNavigate()
-  const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
-
-    if (currentScrollY > lastScrollY && currentScrollY > 100) {
-      setShow(false);
-    } else {
-      setShow(true);
-    }
-
     setLastScrollY(currentScrollY);
   };
 

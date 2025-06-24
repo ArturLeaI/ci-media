@@ -5,14 +5,10 @@ import {
     IconButton
 } from '@mui/material';
 import {
-    Facebook,
     Instagram,
     LinkedIn,
-    Twitter,
     Email,
     Phone,
-    X
-
 } from '@mui/icons-material';
 import { FaTiktok } from 'react-icons/fa';
 

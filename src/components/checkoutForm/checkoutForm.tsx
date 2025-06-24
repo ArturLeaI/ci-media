@@ -11,9 +11,11 @@ import {
   Divider,
   Alert,
   AlertTitle,
-  Grid,
+  
   CircularProgress
 } from '@mui/material';
+import Grid from '@mui/material/Grid';
+
 import { School, CreditCard, Security } from '@mui/icons-material';
 import { useStripe, useElements, CardNumberElement } from '@stripe/react-stripe-js';
 import CardFieldsForm from '../cardFields/cardFields';
@@ -180,7 +182,7 @@ export const CheckoutForm = ({ onSubmitSuccess, setPaymentIntentId }: CheckoutFo
         throw new Error(result.error);
       }
 
-      const { clientSecret, paymentIntentId } = result;
+      const { paymentIntentId } = result;
 
       setPaymentIntentId(paymentIntentId);
 
@@ -207,16 +209,14 @@ export const CheckoutForm = ({ onSubmitSuccess, setPaymentIntentId }: CheckoutFo
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      {/* Dados Pessoais */}
       <Box sx={{ mb: 4 }}>
         <SectionTitle variant="h6">
           <School />
           Dados Pessoais
         </SectionTitle>
-
+        
         <Grid container spacing={3}>
-          {/* Remova 'item' e 'component="div"' (a menos que precise de 'component' por outro motivo) */}
-          <Grid xs={12} sm={6}>
+          <Grid size={{ xs: 12, sm: 6 }}>
             <TextField
               label="Nome Completo"
               {...register('nomeCompleto')}
@@ -237,7 +237,7 @@ export const CheckoutForm = ({ onSubmitSuccess, setPaymentIntentId }: CheckoutFo
             />
           </Grid>
 
-          <Grid xs={12} sm={6}>
+          <Grid size={{ xs: 12, sm: 6 }}>
             <TextField
               label="CPF"
               {...register('cpf')}
@@ -264,7 +264,7 @@ export const CheckoutForm = ({ onSubmitSuccess, setPaymentIntentId }: CheckoutFo
             />
           </Grid>
 
-          <Grid xs={12} sm={6}>
+          <Grid size={{ xs: 12, sm: 6 }}>
             <TextField
               label="Email"
               type="email"
@@ -286,7 +286,7 @@ export const CheckoutForm = ({ onSubmitSuccess, setPaymentIntentId }: CheckoutFo
             />
           </Grid>
 
-          <Grid xs={12} sm={6}>
+          <Grid size={{ xs: 12, sm: 6 }}>
             <TextField
               label="Telefone"
               {...register('telefone')}
@@ -324,7 +324,7 @@ export const CheckoutForm = ({ onSubmitSuccess, setPaymentIntentId }: CheckoutFo
         </SectionTitle>
 
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={4}>
+          <Grid size={{ xs: 12, sm: 4 }}>
             <TextField
               label="CEP"
               {...register('cep')}
@@ -352,7 +352,7 @@ export const CheckoutForm = ({ onSubmitSuccess, setPaymentIntentId }: CheckoutFo
             />
           </Grid>
 
-          <Grid item xs={12} sm={8}>
+          <Grid size={{ xs: 12, sm: 8 }}>
             <TextField
               label="Rua"
               {...register('rua')}
@@ -373,7 +373,7 @@ export const CheckoutForm = ({ onSubmitSuccess, setPaymentIntentId }: CheckoutFo
             />
           </Grid>
 
-          <Grid item xs={12} sm={3}>
+          <Grid size={{ xs: 12, sm: 3 }}>
             <TextField
               label="Número"
               {...register('numero')}
@@ -394,7 +394,7 @@ export const CheckoutForm = ({ onSubmitSuccess, setPaymentIntentId }: CheckoutFo
             />
           </Grid>
 
-          <Grid item xs={12} sm={9}>
+          <Grid size={{ xs: 12, sm: 9 }}>
             <TextField
               label="Complemento (opcional)"
               {...register('complemento')}
@@ -413,7 +413,7 @@ export const CheckoutForm = ({ onSubmitSuccess, setPaymentIntentId }: CheckoutFo
             />
           </Grid>
 
-          <Grid item xs={12} sm={6}>
+          <Grid size={{ xs: 12, sm: 6 }}>
             <TextField
               label="Bairro"
               {...register('bairro')}
@@ -434,7 +434,7 @@ export const CheckoutForm = ({ onSubmitSuccess, setPaymentIntentId }: CheckoutFo
             />
           </Grid>
 
-          <Grid item xs={12} sm={4}>
+          <Grid size={{ xs: 12, sm: 4 }}>
             <TextField
               label="Cidade"
               {...register('cidade')}
@@ -455,7 +455,7 @@ export const CheckoutForm = ({ onSubmitSuccess, setPaymentIntentId }: CheckoutFo
             />
           </Grid>
 
-          <Grid item xs={12} sm={2}>
+          <Grid size={{ xs: 12, sm: 2 }}>
             <TextField
               label="Estado (UF)"
               {...register('estado')}

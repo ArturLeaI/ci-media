@@ -3,10 +3,8 @@ import {
   CardExpiryElement,
   CardCvcElement,
 } from '@stripe/react-stripe-js'
-import { Box, Alert, TextField, Typography, styled } from '@mui/material'
-import { CreditCard } from '@mui/icons-material'
+import { Box, Alert, Typography, styled } from '@mui/material'
 
-// ⚙️ Opções mínimas exigidas pela Stripe
 const CARD_ELEMENT_OPTIONS = {
   style: {
     base: {
@@ -21,17 +19,6 @@ const CARD_ELEMENT_OPTIONS = {
     },
   },
 }
-
-// 🎨 Estilização do título
-const SectionTitle = styled(Typography)(({ theme }) => ({
-  color: '#b83143',
-  marginBottom: theme.spacing(3),
-  fontWeight: 'bold',
-  display: 'flex',
-  alignItems: 'center',
-  gap: theme.spacing(1),
-}))
-
 const StripeInputWrapper = styled(Box)(({ theme }) => ({
   padding: theme.spacing(1.5, 1.5),
   border: '1px solid #ccc',

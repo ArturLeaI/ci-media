@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Box, Grid, Typography, useTheme, useMediaQuery, Container } from '@mui/material';
+import { Box, Grid, Typography, Container } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
@@ -264,7 +264,7 @@ const MentoringPage: React.FC = () => {
             >
                 <Container maxWidth="xl">
                     <Grid container spacing={{ xs: 4, md: 6, lg: 45 }} alignItems="flex-start">
-                        <Grid item xs={12} lg={4} sx={{ pl: { lg: 15 } }} >
+                        <Grid size={{xs: 12, lg:4}} sx={{ pl: { lg: 15 } }} >
                             <motion.div
                                 initial={{ x: -50, opacity: 0 }}
                                 whileInView={{ x: 0, opacity: 1 }}
@@ -294,7 +294,7 @@ const MentoringPage: React.FC = () => {
                             </motion.div>
                         </Grid>
 
-                        <Grid item xs={12} lg={8} sx={{ pl: { lg: 10 } }}>
+                        <Grid size={{xs: 12, lg:8}} sx={{ pl: { lg: 10 } }}>
                             <motion.div
                                 initial={{ x: 50, opacity: 0 }}
                                 whileInView={{ x: 0, opacity: 1 }}
@@ -473,7 +473,7 @@ const MentoringPage: React.FC = () => {
             >
                 <Container maxWidth="xl">
                     <Grid container spacing={{ xs: 4, md: 6, lg: 8 }} alignItems="flex-start">
-                        <Grid item xs={12} lg={7} order={{ xs: 2, lg: 1 }}>
+                        <Grid size={{xs:12, lg:7}} order={{ xs: 2, lg: 1 }}>
                             <motion.div
                                 initial={{ x: -50, opacity: 0 }}
                                 whileInView={{ x: 0, opacity: 1 }}
@@ -532,7 +532,7 @@ const MentoringPage: React.FC = () => {
             >
                 <Container maxWidth="xl">
                     <Grid container spacing={{ xs: 4, md: 6, lg: 8 }} alignItems="flex-start">
-                        <Grid item xs={12} lg={5} order={{ xs: 1, lg: 15 }} sx={{
+                        <Grid size={{xs:12, lg:5}} order={{ xs: 1, lg: 15 }} sx={{
                             ml: { lg: 'auto' },
                             textAlign: { xs: 'center', lg: 'right' },
                         }}>

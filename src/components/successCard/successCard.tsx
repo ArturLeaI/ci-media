@@ -1,14 +1,4 @@
-import {
-  Box,
-  Typography,
-  Card,
-  CardContent,
-  Paper,
-  Grid,
-  Button,
-  Avatar,
-  Chip
-} from '@mui/material';
+import { Box, Typography, Card, CardContent, Paper, Grid, Button, Avatar, Chip} from '@mui/material';
 import { CheckCircle } from '@mui/icons-material';
 
 export const SuccessCard = ({ orderData }: { orderData: any }) => {
@@ -55,38 +45,38 @@ export const SuccessCard = ({ orderData }: { orderData: any }) => {
             Detalhes do Pedido
           </Typography>
           <Grid container spacing={2} sx={{ textAlign: 'left' }}>
-            <Grid item xs={6}>
+            <Grid size={{ xs: 6 }}>
               <Typography variant="body2" sx={{ fontWeight: 'bold' }}>Nome:</Typography>
             </Grid>
-            <Grid item xs={6}>
+            <Grid size={{ xs: 6 }}>
               <Typography variant="body2">{orderData.customer.name}</Typography>
             </Grid>
-            <Grid item xs={6}>
+            <Grid size={{ xs: 6 }}>
               <Typography variant="body2" sx={{ fontWeight: 'bold' }}>Email:</Typography>
             </Grid>
-            <Grid item xs={6}>
+            <Grid size={{ xs: 6 }}>
               <Typography variant="body2" sx={{ wordBreak: 'break-all' }}>
                 {orderData.customer.email}
               </Typography>
             </Grid>
-            <Grid item xs={6}>
+            <Grid size={{ xs: 6 }}>
               <Typography variant="body2" sx={{ fontWeight: 'bold' }}>CPF:</Typography>
             </Grid>
-            <Grid item xs={6}>
+            <Grid size={{ xs: 6 }}>
               <Typography variant="body2">{orderData.customer.cpf}</Typography>
             </Grid>
-            <Grid item xs={6}>
+            <Grid size={{ xs: 6 }}>
               <Typography variant="body2" sx={{ fontWeight: 'bold' }}>Pedido ID:</Typography>
             </Grid>
-            <Grid item xs={6}>
+            <Grid size={{ xs: 6 }}>
               <Typography variant="body2" sx={{ fontFamily: 'monospace', fontSize: '0.8rem' }}>
                 {orderData.order_id}
               </Typography>
             </Grid>
-            <Grid item xs={6}>
+            <Grid size={{ xs: 6 }}>
               <Typography variant="body2" sx={{ fontWeight: 'bold' }}>Status:</Typography>
             </Grid>
-            <Grid item xs={6}>
+            <Grid size={{ xs: 6 }}>
               <Chip
                 label="Pago"
                 color="success"

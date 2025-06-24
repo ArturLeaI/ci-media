@@ -3,10 +3,10 @@ import { styled } from '@mui/material/styles';
 import {
   Box,
   Container,
-  Grid,
   Paper,
   Typography
 } from '@mui/material';
+import Grid from '@mui/material/Grid';
 import { CreditCard } from '@mui/icons-material';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
@@ -90,13 +90,14 @@ export const CheckoutPage = () => {
             <SuccessCard orderData={orderData} />
           </Container>
         ) : (
-          <Grid container spacing={3}>
-            <Grid item xs={12} lg={5}>
+          <Grid container spacing={2}>
+            <Grid size={{ xs: 12, lg: 7 }}>
+              
               <HeaderCard />
               <ProductCardComponent />
             </Grid>
 
-            <Grid item xs={12} lg={7}>
+            <Grid size={{ xs: 12, lg: 5}}>
               <FormContainer>
                 <SectionTitle variant="h5">
                   <CreditCard />

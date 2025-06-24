@@ -1,17 +1,5 @@
 import { styled } from '@mui/material/styles';
-import {
-  Box,
-  Typography,
-  Card,
-  CardContent,
-  Divider,
-  Paper,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Chip,
-} from '@mui/material';
+import { Box, Typography, Card, CardContent, Divider, Paper, List, ListItem, ListItemIcon, ListItemText, Chip,} from '@mui/material';
 import { Star, FlashOn, AdsClick,  } from '@mui/icons-material';
 
 const ProductCard = styled(Card)(({ theme }) => ({
