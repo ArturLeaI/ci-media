@@ -1,7 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MentoringPage from './pages/mentoringPage';
-import Header from './components/header';
+import Header from './components/header/header';
 import FormPage from './pages/formPage';
+import Footer from './components/footer/footer';
+import CardFieldsForm from './components/cardFields/cardFields';
 
 const App: React.FC = () => {
   return (
@@ -11,8 +13,10 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<MentoringPage/>} />
           <Route path="/form" element={<FormPage/>} />
+          <Route path="/footer" element={<CardFieldsForm/>} />
         </Routes>
       </div>
+      <Footer/>
     </Router>
   );
 };

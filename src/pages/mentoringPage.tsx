@@ -6,10 +6,6 @@ import { useNavigate } from 'react-router-dom';
 const MentoringPage: React.FC = () => {
     const [visible, setVisible] = useState(false);
     const ref = useRef<HTMLDivElement | null>(null);
-    const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-    const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
-    const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
     const navigate = useNavigate();
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -136,11 +132,11 @@ const MentoringPage: React.FC = () => {
                             position: 'relative',
                             zIndex: 3,
                             fontSize: {
-                                xs: "1.1rem",
-                                sm: "1.3rem",
-                                md: "1.6rem",
-                                lg: "2rem",
-                                xl: "2.2rem"
+                                xs: "1.0rem",
+                                sm: "1.2rem",
+                                md: "1.5rem",
+                                lg: "1.8rem",
+                                xl: "2rem"
                             },
                             lineHeight: { xs: 1.6, md: 1.8 },
                             textAlign: "justify",
