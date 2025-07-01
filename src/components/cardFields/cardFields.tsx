@@ -26,7 +26,7 @@ const StripeInputWrapper = styled(Box)(({ theme }) => ({
   backgroundColor: '#fff',
 }))
 
-export default function CardFieldsForm({ error }: { error?: string }) {
+export default function CardFieldsForm({ error }: { error?: string| null }) {
   return (
     <Box sx={{ mb: 4 }}>
       <Box
