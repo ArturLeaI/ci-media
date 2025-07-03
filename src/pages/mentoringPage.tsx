@@ -110,7 +110,7 @@ const App: React.FC = () => {
                 <Box sx={{ position: 'absolute', inset: 0, opacity: 0.4 }}>
                     <Box
                         component="img"
-                        src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg"
+                        src='/images/intro.png'
                         alt="Background"
                         sx={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     />
@@ -277,15 +277,15 @@ const App: React.FC = () => {
                 }}
             >
                 {/* Background Image with Overlay */}
-                <Box sx={{ position: 'absolute', inset: 0, opacity: 0.2 }}>
+                <Box sx={{ position: 'absolute', inset: 0, opacity: 0.7 }}>
                     <Box
                         component="img"
-                        src="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg"
+                        src='/images/intro.png'
                         alt="Background"
                         sx={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     />
                 </Box>
-                <Box sx={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.9))' }} />
+                <Box sx={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.2))' }} />
 
                 <Container maxWidth="lg">
                     <Box sx={{ textAlign: 'center', mb: 8 }}>
@@ -294,7 +294,7 @@ const App: React.FC = () => {
                             sx={{
                                 fontSize: { xs: '2.25rem', md: '3rem' },
                                 fontWeight: 'bold',
-                                color: '#e6e8da',
+                                color: 'white',
                                 mb: 4
                             }}
                         >
@@ -584,7 +584,7 @@ const App: React.FC = () => {
                                 >
                                     <Box
                                         component="img"
-                                        src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg"
+                                        src='/images/intro.png'
                                         alt="Background"
                                     />
                                 </Box>
@@ -635,6 +635,7 @@ const App: React.FC = () => {
                         </Typography>
                         <Button
                             variant="contained"
+
                             sx={{
                                 mx: 'auto',
                                 display: 'inline-flex',

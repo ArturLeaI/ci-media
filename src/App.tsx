@@ -5,12 +5,14 @@ import FormPage from './pages/formPage';
 import Footer from './components/footer/footer';
 import CardFieldsForm from './components/cardFields/cardFields';
 import Home from './pages/aboutUS';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop'; // 👈 importe aqui
 
 const AppContent = () => {
   const location = useLocation();
 
   return (
     <>
+      <ScrollToTop /> {/* 👈 adiciona aqui dentro do Router */}
       <Header />
       <div className="pt-20">
         <Routes>
