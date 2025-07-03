@@ -319,6 +319,7 @@ const App: React.FC = () => {
                                 description: "Para quem quer mais do que seguidores — quer posicionamento, clareza e estratégia",
                                 icon: <BarChart3 sx={{ fontSize: '3rem', color: '#b83143' }} />
                             }
+                            
                         ].map((item, index) => (
                             <Grid
                                 item
@@ -413,7 +414,6 @@ const App: React.FC = () => {
                     >
                         {modules.map((module, index) => (
                             <Grid
-                                item
                                 key={index}
                                 sx={{
                                     flex: {
