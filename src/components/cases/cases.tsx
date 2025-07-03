@@ -2,13 +2,9 @@ import React from 'react';
 import {
   Box,
   Typography,
-  useTheme,
-  useMediaQuery,
 } from '@mui/material';
 
 const Clients = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const clients = [
     { name: 'Taguatinga Shopping', logo: '/images/tgs.png' },

@@ -11,13 +11,14 @@ import {
     Phone,
 } from '@mui/icons-material';
 import { FaTiktok } from 'react-icons/fa';
+import { MapPin } from 'lucide-react';
 
 const Footer = () => {
     return (
         <Box
             component="footer"
             sx={{
-                backgroundColor: '#b83143',
+                backgroundColor: 'black',
                 color: 'white',
                 py: 4,
                 width: '100%',
@@ -35,7 +36,7 @@ const Footer = () => {
                     }}
                 >
                     <Box sx={{ textAlign: { xs: 'center', md: 'left' } }}>
-                        <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 2 }}>
+                        <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
                             Contato
                         </Typography>
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
@@ -81,12 +82,18 @@ const Footer = () => {
                     </Box>
                 </Box>
 
-                <Box sx={{ mt: 4, textAlign: 'center' }}>
-                    <Typography variant="body2">
-                        © {new Date().getFullYear()} Ci Media. Todos os direitos reservados.
+                <Box mt={3} pt={3} borderTop="1px solid rgba(255,255,255,0.1)" textAlign="center">
+                    <Box display="flex" justifyContent="center" alignItems="center" mb={2}>
+                        <MapPin size={18} color="#b83143" style={{ marginRight: 8 }} />
+                        <Typography sx={{ color: 'white', opacity: 0.7 }}>
+                            Brasília, DF - Brasil
+                        </Typography>
+                    </Box>
+                    <Typography sx={{ color: 'white', opacity: 0.6, mb: 2 }}>
+                        Transformando presença digital em impacto real desde 2022
                     </Typography>
-                    <Typography variant="body2" sx={{ mt: 1 }}>
-                        CNPJ: 28.630.970/0001-90
+                    <Typography sx={{ color: '#e6e8da', fontWeight: 'bold', fontSize: '1.5rem' }}>
+                        Ci Media - Presença com Propósito
                     </Typography>
                 </Box>
             </Container>

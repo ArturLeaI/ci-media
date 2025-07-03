@@ -43,6 +43,7 @@ const Hero = () => {
           inset: 0,
           backgroundImage:
             "url('/images/intro.png')",
+          backgroundAttachment: { xs: 'scroll', md: 'fixed' },
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           opacity: 0.4,

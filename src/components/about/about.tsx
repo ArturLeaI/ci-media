@@ -57,7 +57,13 @@ const About = () => {
               </Typography>
 
               {/* Pontos-chave */}
-              <Grid container spacing={4} sx={{ mt: 6 }}>
+              <Grid
+                container
+                spacing={4}
+                justifyContent="center"
+                alignItems="center"
+                sx={{ mt: 6 }}
+              >
                 {[
                   {
                     icon: <Users size={32} />,
@@ -75,13 +81,24 @@ const About = () => {
                     desc: 'Resultados reais e mensuráveis',
                   },
                 ].map((item, idx) => (
-                  <Grid item xs={12} md={4} key={idx} textAlign="center">
+                  <Grid
+                    item
+                    xs={12}
+                    sm={6}
+                    md={3}
+                    key={idx}
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      textAlign: 'center',
+                    }}
+                  >
                     <Avatar
                       sx={{
                         bgcolor: '#b83143',
                         width: 64,
                         height: 64,
-                        mx: 'auto',
                         mb: 2,
                       }}
                     >
@@ -114,7 +131,7 @@ const About = () => {
                 sx={{
                   position: 'absolute',
                   inset: 0,
-                  backgroundImage: `url('https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')`,
+                  backgroundImage: `url('images/Portifolio.png')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   opacity: 0.2,
