@@ -22,15 +22,9 @@ const contactMethods = [
   },
   {
     icon: Phone,
-    label: 'Camilla Hellen',
-    value: '(61) 99637-9064',
-    href: 'tel:+5561996379064',
-  },
-  {
-    icon: MessageCircle,
-    label: 'Ianca Gomes',
-    value: '(61) 99111-4799',
-    href: 'tel:+5561991114799',
+    label: 'Ci Media',
+    value: '(61) 99681-6438',
+    href: 'tel:+5561996816438',
   },
 ];
 
@@ -127,7 +121,7 @@ const Contact = () => {
                 sx={{
                   position: 'absolute',
                   inset: 0,
-                  backgroundImage: `url('https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')`,
+                  backgroundImage: `url('images/missao.jpg')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   opacity: 0.2,
@@ -158,23 +152,6 @@ const Contact = () => {
                   >
                     Solicitar Orçamento
                   </Button>
-                  <Button
-                    variant="outlined"
-                    fullWidth
-                    sx={{
-                      color: 'white',
-                      borderColor: 'white',
-                      fontWeight: 'bold',
-                      '&:hover': {
-                        bgcolor: 'white',
-                        color: '#b83143',
-                        transform: 'scale(1.05)'
-                      }
-                    }}
-                    endIcon={<Phone size={20} />}
-                  >
-                    Agendar Chamada
-                  </Button>
                 </Box>
               </Box>
             </Box>
@@ -190,10 +167,10 @@ const Contact = () => {
             </Typography>
           </Box>
           <Typography sx={{ color: 'white', opacity: 0.6, mb: 2 }}>
-            Transformando presença digital em impacto real desde 2022
+            Desde 2023 criando presença digital com impacto real.
           </Typography>
-          <Typography sx={{ color: '#e6e8da', fontWeight: 'bold', fontSize: '1.5rem' }}>
-            Ci Media - Presença com Propósito
+          <Typography sx={{ color: '#e6e8da', fontWeight: 'bold', fontSize: '1.1rem' }}>
+            🍒 Ci Media
           </Typography>
         </Box>
       </Container>

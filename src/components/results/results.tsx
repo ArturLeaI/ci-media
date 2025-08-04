@@ -70,34 +70,9 @@ const Results = () => {
             color="black"
             sx={{ opacity: 0.7, maxWidth: 700, mx: 'auto' }}
           >
-            Nossos números refletem o impacto real que geramos para nossos clientes, transformando presença digital em resultados concretos.
+            Transformamos presença digital em autoridade, conexão e vendas.
           </Typography>
         </Box>
-
-        <Grid container spacing={4} mb={10}>
-          {stats.map((stat, index) => (
-            <Grid size={{xs:12, sm:6, md:3}} key={index}>
-              <Box
-                sx={{
-                  background: stat.color,
-                  borderRadius: 4,
-                  p: 4,
-                  textAlign: 'center',
-                  color: '#fff',
-                  transition: 'transform 0.3s',
-                  '&:hover': {
-                    transform: 'scale(1.05)',
-                    boxShadow: '0 8px 20px rgba(0,0,0,0.2)'
-                  }
-                }}
-              >
-                <stat.icon style={{ width: 40, height: 40, marginBottom: 16 }} />
-                <Typography variant="h4" fontWeight="bold">{stat.number}</Typography>
-                <Typography>{stat.label}</Typography>
-              </Box>
-            </Grid>
-          ))}
-        </Grid>
 
         <Grid container spacing={4}>
           {testimonials.map((testimonial, index) => (

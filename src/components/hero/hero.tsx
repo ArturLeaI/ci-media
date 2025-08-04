@@ -32,7 +32,7 @@ const Hero = () => {
           position: 'absolute',
           inset: 0,
           background:
-            'linear-gradient(to bottom right, rgba(0,0,0,0.8), rgba(0,0,0,0.7), rgba(184,49,67,0.3))',
+            'linear-gradient(to bottom right, rgba(0,0,0,0.8), rgba(0,0,0,0.1), rgba(184,49,67,0.2))',
           zIndex: 1,
         }}
       />
@@ -42,7 +42,7 @@ const Hero = () => {
           position: 'absolute',
           inset: 0,
           backgroundImage:
-            "url('/images/intro.png')",
+            "url('/images/about2.jpg')",
           backgroundAttachment: { xs: 'scroll', md: 'fixed' },
           backgroundSize: 'cover',
           backgroundPosition: 'center',
@@ -92,7 +92,7 @@ const Hero = () => {
             lineHeight: 1.6,
           }}
         >
-          Transformando ideias em posicionamento real.
+          Mais do que ideias: criamos presença com propósito.
         </Typography>
 
         <Button
@@ -119,7 +119,7 @@ const Hero = () => {
             },
           }}
         >
-          Descobrir Mais
+          Conhecer Mais
         </Button>
       </Container>
 

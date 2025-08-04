@@ -63,7 +63,7 @@ export const CheckoutPage = () => {
             order_id: `ORD_${Date.now()}`,
             status: json.status,
             customer: json.customer ?? {},
-            amount: 79700,
+            amount: 49700,
           };
           handleSubmitSuccess(mockOrderData);
         }

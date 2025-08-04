@@ -27,12 +27,12 @@ const Clients = () => {
             variant="h4"
             sx={{ color: '#e6e8da', fontWeight: 'bold', mb: 2 }}
           >
-            Clientes que Confiam em Nós
+            🍒 Quem já teve (ou tem) a cereja do bolo da Ci Media no seu marketing:
           </Typography>
           <Typography
             sx={{ color: 'white', opacity: 0.7, fontSize: '1.1rem', maxWidth: 600, mx: 'auto' }}
           >
-            Marcas de diversos segmentos que transformaram sua presença digital conosco
+            Marcas e profissionais que escolheram elevar sua presença online com estratégia e intenção.
           </Typography>
         </Box>
 
@@ -130,9 +130,9 @@ const Clients = () => {
             }}
           >
             {[
-              { label: 'Clientes Ativos', value: '50+' },
-              { label: 'Anos de Experiência', value: '3+' },
-              { label: 'Setores Atendidos', value: '15+' },
+              { label: 'Clientes Ativos', value: '20+' },
+              { label: 'Anos de Experiência', value: '2+' },
+              { label: 'Setores Atendidos', value: '7+' },
             ].map((item, idx) => (
               <React.Fragment key={idx}>
                 <Box textAlign="center">

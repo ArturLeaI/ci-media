@@ -42,7 +42,7 @@ const About = () => {
               <Typography variant="body1" sx={{ fontSize: '1.2rem', color: 'white', opacity: 0.7, mb: 2 }}>
                 A Ci Media é uma agência digital liderada por{' '}
                 <Box component="span" sx={{ color: '#b83143', fontWeight: '600' }}>
-                  Camilla Hellen
+                  Camilla Helen
                 </Box>{' '}
                 e{' '}
                 <Box component="span" sx={{ color: '#b83143', fontWeight: '600' }}>
@@ -59,7 +59,7 @@ const About = () => {
               {/* Pontos-chave */}
               <Grid
                 container
-                spacing={4}
+                spacing={8}
                 justifyContent="center"
                 alignItems="center"
                 sx={{ mt: 6 }}
@@ -68,17 +68,17 @@ const About = () => {
                   {
                     icon: <Users size={32} />,
                     title: 'Expertise',
-                    desc: 'Anos de experiência em marketing digital',
+                    desc: 'Anos de experiência transformando marcas no digital.',
                   },
                   {
                     icon: <Target size={32} />,
                     title: 'Estratégia',
-                    desc: 'Posicionamento com propósito e resultado',
+                    desc: 'Posicionamento com propósito e foco em resultado',
                   },
                   {
                     icon: <Zap size={32} />,
                     title: 'Impacto',
-                    desc: 'Resultados reais e mensuráveis',
+                    desc: 'Resultados reais, mensuráveis e que fazem diferença.',
                   },
                 ].map((item, idx) => (
                   <Grid
@@ -131,7 +131,7 @@ const About = () => {
                 sx={{
                   position: 'absolute',
                   inset: 0,
-                  backgroundImage: `url('images/Portifolio.png')`,
+                  backgroundImage: `url('images/missao2.jpg')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   opacity: 0.2,
@@ -143,8 +143,8 @@ const About = () => {
                   Nossa Missão
                 </Typography>
                 <Typography variant="body1" sx={{ color: 'white', opacity: 0.9 }}>
-                  Democratizar o acesso a estratégias de marketing digital eficazes, capacitando pessoas e marcas a
-                  alcançarem seus objetivos com autenticidade e propósito.
+                  Transformar marcas e pessoas em presenças digitais autênticas, estratégicas e memoráveis.
+                  Criamos conteúdo que conecta, posiciona e vende, sempre com propósito, verdade e aquela cereja do bolo que só a Ci Media sabe entregar.
                 </Typography>
               </Box>
             </Box>

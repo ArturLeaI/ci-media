@@ -64,10 +64,10 @@ export const ProductCardComponent = () => {
           </Box>
           <PriceBox>
             <Typography variant="body2" sx={{ textDecoration: 'line-through', opacity: 0.7 }}>
-              R$ 1.594,00
+              R$ 994,00
             </Typography>
             <Typography variant="h4" sx={{ fontWeight: 'bold' }}>
-              R$ 797,00
+              R$ 497,00
             </Typography>
             <Typography variant="caption" sx={{ color: '#ffd700' }}>
               50% de desconto
@@ -106,25 +106,37 @@ export const ProductCardComponent = () => {
               <ListItemIcon>
                 <FlashOn />
               </ListItemIcon>
-              <ListItemText primary="Presença com Propósito" />
+              <ListItemText primary="Clareza de posicionamento e propósito" />
             </ListItem>
             <ListItem>
               <ListItemIcon>
                 <FlashOn />
               </ListItemIcon>
-              <ListItemText primary="Conteúdo que Conecta" />
+              <ListItemText primary="Estratégia de conteúdo pensada pra você" />
             </ListItem>
             <ListItem>
               <ListItemIcon>
                 <FlashOn />
               </ListItemIcon>
-              <ListItemText primary="Ferramentas e Técnicas" />
+              <ListItemText primary="⁠Identidade visual que comunica quem você é" />
             </ListItem>
             <ListItem>
               <ListItemIcon>
                 <FlashOn />
               </ListItemIcon>
-              <ListItemText primary="Métrica e Crescimento" />
+              <ListItemText primary="Planejamento de feed e stories que faz sentido" />
+            </ListItem>
+            <ListItem>
+              <ListItemIcon>
+                <FlashOn />
+              </ListItemIcon>
+              <ListItemText primary="Técnicas reais pra engajar e crescer organicamente" />
+            </ListItem>
+            <ListItem>
+              <ListItemIcon>
+                <FlashOn />
+              </ListItemIcon>
+              <ListItemText primary="Acompanhamento semanal, lado a lado" />
             </ListItem>
           </FeatureList>
         </Paper>
@@ -137,10 +149,10 @@ export const ProductCardComponent = () => {
           </Typography>
           <Box sx={{ textAlign: 'right' }}>
             <Typography variant="body2" sx={{ textDecoration: 'line-through', opacity: 0.7 }}>
-              R$ 1.594,00
+              R$ 994,00
             </Typography>
             <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#ffd700' }}>
-              R$ 797,00
+              R$ 497,00
             </Typography>
           </Box>
         </Box>

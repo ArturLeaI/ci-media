@@ -14,12 +14,14 @@ import {
     ListItemText,
     Paper,
 } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+
 
 const App: React.FC = () => {
     const [visible, setVisible] = useState(false);
     const [activeSection, setActiveSection] = useState(0);
     const ref = useRef<HTMLDivElement | null>(null);
-
+    const navigate = useNavigate()
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
@@ -319,7 +321,7 @@ const App: React.FC = () => {
                                 description: "Para quem quer mais do que seguidores — quer posicionamento, clareza e estratégia",
                                 icon: <BarChart3 sx={{ fontSize: '3rem', color: '#b83143' }} />
                             }
-                            
+
                         ].map((item, index) => (
                             <Grid
                                 item
@@ -592,11 +594,9 @@ const App: React.FC = () => {
                                 {/* Conteúdo do card */}
                                 <Box sx={{ position: 'relative', zIndex: 10 }}>
                                     <Typography variant="h4" sx={{ fontWeight: 'bold', mb: 1 }}>
-                                        R$ 797,00
+                                        R$ 497,00
                                     </Typography>
-                                    <Typography variant="h6" sx={{ mb: 2 }}>
-                                        dividido em até 12x pelo infinitepay
-                                    </Typography>
+
                                     <Typography variant="body2" sx={{ opacity: 0.9, lineHeight: 'relaxed' }}>
                                         (inclui 1 encontro individual para personalização das estratégias e esclarecimento de dúvidas)
                                     </Typography>
@@ -634,6 +634,7 @@ const App: React.FC = () => {
                             Comece hoje mesmo sua jornada para uma presença digital estratégica e autêntica
                         </Typography>
                         <Button
+                            onClick={() => navigate('/form')}
                             variant="contained"
 
                             sx={{

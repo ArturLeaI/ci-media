@@ -18,49 +18,49 @@ const Services = () => {
       icon: Instagram,
       title: 'Gestão de Redes Sociais',
       description:
-        'Criação e gestão completa de conteúdo para suas redes sociais com estratégia focada em resultados.',
+        'Conteúdo estratégico e gestão completa para suas redes, com foco em posicionamento e vendas.'
     },
     {
       icon: Users,
       title: 'Mentorias Personalizadas',
       description:
-        'Acompanhamento individual para desenvolver sua presença digital e estratégias de marketing.',
+        'Acompanhamento individual pra você dominar sua presença digital e aplicar estratégias que convertem.'
     },
     {
       icon: Target,
       title: 'Tráfego Pago (Meta/Google)',
       description:
-        'Campanhas publicitárias otimizadas para maximizar seu retorno sobre investimento.',
+        'Campanhas inteligentes que maximizam seu ROI e colocam sua marca na frente de quem importa.'
     },
     {
       icon: Palette,
       title: 'Branding e Identidade Visual',
       description:
-        'Desenvolvimento de marca forte e consistente que conecta com seu público-alvo.',
+        'Criação de marcas fortes, alinhadas e memoráveis, que falam direto com seu público.',
     },
     {
       icon: Video,
       title: 'Produção de Conteúdo',
       description:
-        'Criação de Reels, Stories, Vídeos e conteúdo visual de alta qualidade.',
+        'Reels, Stories, vídeos e fotos de alta qualidade que elevam sua comunicação.',
     },
     {
       icon: Star,
       title: 'Marketing de Influência & UGC',
       description:
-        'Estratégias de influenciadores e conteúdo gerado por usuários para amplificar sua marca.',
+        'Ações com influenciadores e conteúdos reais gerados por usuários para impulsionar sua marca.',
     },
     {
       icon: Camera,
       title: 'Coberturas e Media Day',
       description:
-        'Cobertura profissional de eventos e criação de conteúdo para suas campanhas.',
+        'Conteúdo ao vivo e cobertura estratégica para eventos e lançamentos.',
     },
     {
       icon: TrendingUp,
       title: 'Análise e Performance',
       description:
-        'Monitoramento e otimização contínua baseada em dados e métricas de performance.',
+        'Acompanhamento de métricas e otimizações constantes para garantir resultados cada vez melhore.',
     },
   ];
 
@@ -77,8 +77,7 @@ const Services = () => {
             Nossas Soluções em Marketing Digital
           </Typography>
           <Typography variant="h6" color="#000000" sx={{ opacity: 0.7 }}>
-            Oferecemos um conjunto completo de serviços para transformar sua presença
-            digital e acelerar seus resultados no mundo online.
+            Transformamos sua presença digital com estratégias completas que aceleram resultados e posicionam sua marca do jeito certo no online.
           </Typography>
         </Box>
 

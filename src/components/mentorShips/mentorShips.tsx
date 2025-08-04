@@ -12,8 +12,7 @@ const Mentorships = () => {
             Mentorias para quem quer ir além do conteúdo
           </Typography>
           <Typography variant="h6" sx={{ color: 'black', opacity: 0.7, maxWidth: 720, mx: 'auto' }}>
-            Desenvolvemos programas de mentoria personalizados para diferentes níveis,
-            desde iniciantes até marcas que buscam performance estratégica.
+            Programas personalizados para quem quer mais do que postar por postar — quer construir presença, autoridade e resultados, desde o primeiro passo até o próximo nível.
           </Typography>
         </Box>
 
@@ -49,7 +48,7 @@ const Mentorships = () => {
               />
 
               <Box display="flex" alignItems="center" mb={3}>
-                <Box sx={{ bgcolor: '#b83143', borderRadius: '50%', p: 1.5, mr: 2 }}>
+                <Box sx={{ bgcolor: '#b83145', borderRadius: '50%', p: 1.5, mr: 2 }}>
                   <Sparkles style={{ color: 'white', width: 24, height: 24 }} />
                 </Box>
                 <Typography variant="h5" sx={{ color: '#e6e8da', fontWeight: 'bold' }}>
@@ -58,18 +57,17 @@ const Mentorships = () => {
               </Box>
 
               <Typography sx={{ color: 'white', opacity: 0.7, fontSize: '1.1rem', mb: 4 }}>
-                Ideal para iniciantes e autônomos que querem construir uma presença digital
-                autêntica e estratégica do zero.
+               Perfeita para iniciantes e autônomos que querem criar uma presença digital autêntica e estratégica do zero.
               </Typography>
 
               <Box mb={4}>
                 {[
-                  'Definição de posicionamento e propósito',
-                  'Estratégia de conteúdo personalizada',
-                  'Criação de identidade visual consistente',
-                  'Planejamento de postagens e stories',
-                  'Técnicas de engajamento orgânico',
-                  'Acompanhamento semanal personalizado'
+                  'Clareza de posicionamento e propósito',
+                  'Estratégia de conteúdo pensada pra você',
+                  '⁠Identidade visual que comunica quem você é',
+                  'Planejamento de feed e stories que faz sentido',
+                  'Técnicas reais pra engajar e crescer organicamente',
+                  'Acompanhamento semanal, lado a lado'
                 ].map((item, index) => (
                   <Box key={index} display="flex" alignItems="center" mb={1.5}>
                     <CheckCircle style={{ color: '#b83143', width: 20, height: 20, marginRight: 8 }} />
@@ -95,7 +93,7 @@ const Mentorships = () => {
                 endIcon={<ArrowRight style={{ transition: 'transform 0.3s ease-in-out' }} />}
                 onClick={() => navigate('/mentoria')}
               >
-                Começar Jornada
+                VAMOS COMEÇAR?
               </Button>
             </Box>
           </Grid>
