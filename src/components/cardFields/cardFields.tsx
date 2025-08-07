@@ -67,12 +67,6 @@ export default function CardFieldsForm({ error }: { error?: string| null }) {
           </Box>
         </Box>
       </Box>
-
-      {error && (
-        <Alert severity="error" sx={{ mb: 3 }}>
-          {error}
-        </Alert>
-      )}
     </Box>
   )
 }
